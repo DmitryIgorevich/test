@@ -1,0 +1,113 @@
+@import './variables';
+@import './mixins';
+@import './animations';
+
+.second-page {
+    min-height: 100vh;
+    background: url('../assets/images/bg.jpg') $mainBg-o1;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    animation-name: openingPage;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $mainBg-o1;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        padding: 30px;
+
+        @include maxw(900) {
+            padding: 15px;
+        }
+    }
+
+    &__button-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 18px;
+    }
+
+    &__items-wrapper {
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: repeat(4, 1fr);
+
+        @include maxw(900) {
+            grid-gap: 15px;
+        }
+    }
+
+    &__item {
+    }
+}
+
+
+$item_selector: 'action-item';
+
+.#{$item_selector} {
+    position: relative;
+    font-size: 20px;
+    padding: 60% 0 0 0;
+
+    &__button {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        background-color: $mainBg;
+        transition: 0.3s all ease;
+
+        &:hover {
+            background-color: $hoverBg;
+
+            .#{$item_selector}__description {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+        }
+
+        @include maxw(900) {
+            padding: 10px;
+        }
+    }
+
+    &__title {
+        margin: 0 0 15px 0;
+        align-self: center;
+    }
+
+    &__description {
+        @include lineclamp(6);
+
+        text-align: left;
+        transition: 0.3s all ease;
+        opacity: 0;
+        transform: translate(0, 50px);
+
+        @include maxw(1485) {
+            line-clamp: 3;
+            -webkit-line-clamp: 3;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+@mixin lineclamp($clamp) {
+    display: -webkit-box;
+    line-clamp: 6;
+    box-orient: vertical;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+@mixin maxw($media) {
+    @media (max-width: #{$media}px) {
+        @content;
+    }
+}

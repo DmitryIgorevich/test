@@ -1,0 +1,13 @@
+@import './null';
+@import './_main.scss';
+@import './second-page';
+
+body {
+    color: $mainFzColor;
+}
+
+.wrapper {
+    min-height: 100vh;
+    background-color: $mainBg;
+    line-height: 1.2;
+}
