@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', init);
 function init(): void {
     App = document.querySelector('#app');
 
-    showPage(detectShowedPage());
+    showPage(detectShowedPage(), true);
     setSubscribers();
 }
 
@@ -34,7 +34,22 @@ function detectShowedPage(): IState {
     }
 }
 
-function showPage(state: IState): void {
+function showPage(state: IState, redirectOnMainPage: boolean = false): void {
+    if (!state) {
+
+        if (!redirectOnMainPage) {
+            return;
+        } else {
+            const Component = _states.states[_states.main].component;
+            new Component({
+                element: App,
+                innerHTML: true,
+            });
+
+            return;
+        }
+    }
+
     const Component = state.component;
     new Component({
         element: App,
