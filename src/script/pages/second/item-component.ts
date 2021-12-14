@@ -2,6 +2,7 @@ import {
     IComponent,
     IComponentElementSettings,
 } from '../../system/types/types';
+import {PopupComponent} from './popup-component';
 
 export interface IContentToShow {
     title: string;
@@ -15,7 +16,9 @@ export class ItemComponent implements IComponent {
 
     constructor(
         protected content: IContentToShow,
-        protected settings: IComponentElementSettings
+        protected settings: IComponentElementSettings,
+        protected elementForPopup: HTMLElement,
+        protected itemWrapper: HTMLElement
     ) {
         this.bindMethods();
         this.init();
@@ -49,7 +52,17 @@ export class ItemComponent implements IComponent {
     }
 
     protected onClick(): void {
-        console.log('click', this.button);
+        const popup = new PopupComponent(
+            this.content,
+            {
+                element: this.elementForPopup,
+            },
+            this.button,
+            this.itemWrapper
+        );
+
+        popup.generateHtml();
+        popup.setSubsribers();
     }
 
     private bindMethods(): void {

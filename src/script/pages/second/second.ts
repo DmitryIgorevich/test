@@ -9,6 +9,7 @@ export class SecondPageComponent implements IComponent {
     protected components: ItemComponent[];
     private button: HTMLButtonElement;
     private itemsWrapper: HTMLDivElement;
+    private elementForPopup: HTMLElement;
 
     constructor(
         protected settings: IComponentElementSettings
@@ -56,7 +57,9 @@ export class SecondPageComponent implements IComponent {
                 {
                     element: this.itemsWrapper,
                     uniqKey: i,
-                }
+                },
+                this.settings.element.querySelector('.second-page'),
+                this.itemsWrapper
             );
             items += component.getTemplate();
 

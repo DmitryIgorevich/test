@@ -6,3 +6,51 @@
         opacity: 1;
     }
 }
+
+@keyframes openingPopup {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes closingPopup {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes openingButton {
+    0% {
+        max-width: var(--initial-button-width);
+        max-height: var(--initial-button-height);
+        left: var(--initial-button-left);
+        right: var(--initial-button-right);
+    }
+    100% {
+        max-width: var(--onopen-button-width);
+        max-height: var(--onopen-button-height);
+        left: 0px;
+        right: 0px;
+    }
+}
+
+@keyframes closingButton {
+    0% {
+        max-width: var(--onopen-button-width);
+        max-height: var(--onopen-button-height);
+        left: 0px;
+        right: 0px;
+    }
+    100% {
+        max-width: var(--initial-button-width);
+        max-height: var(--initial-button-height);
+        left: var(--initial-button-left);
+        right: var(--initial-button-right);
+    }
+}

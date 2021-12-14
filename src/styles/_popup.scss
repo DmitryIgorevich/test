@@ -1,0 +1,68 @@
+@import './variables';
+@import './animations';
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $mainBg-o1;
+    padding: 30px;
+
+    &.open,
+    &.close {
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+    }
+
+    &.open {
+        animation-name: openingPopup;
+    }
+
+    &.close {
+        animation-name: closingPopup;
+    }
+
+    @include maxw(900) {
+        padding: 15px;
+    }
+
+    &__top {
+        font-size: 20px;
+        margin: 0 0 20px 0;
+    }
+
+    &__content {
+        position: relative;
+        flex: 1 1 auto;
+        font-size: 18px;
+    }
+
+    &__button {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        padding: 20px;
+        overflow: hidden;
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+        border: 2px solid #969696;
+        background-color: $mainBg;
+
+        &.open {
+            animation-name: openingButton;
+        }
+
+        &.close {
+            animation-name: closingButton;
+        }
+    }
+}
